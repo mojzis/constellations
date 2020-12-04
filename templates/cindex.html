@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-Constellations
+{{ culture }}
 {% endblock %}
 {% block customhead%}
 <style type="text/css">
@@ -12,10 +12,10 @@ p.list {
 {% endblock %}
 {% block content %}
 
-Constellations per culture, as shown in <a href="https://stellarium.org/">Stellarium</a>
-{% for cult in cultures %}
+Constellations of the {{ culture }} culture, as shown in <a href="https://stellarium.org/">Stellarium</a>
+{% for const in const_data %}
 <p class="list">
-    <a href="{{ cult.slug }}/index.html">{{ cult.name }}</a>
+    <a href="{{ const.filename }}.html">{{ const.name }}</a>
 </p>
 {% endfor %}
 {% endblock %}
