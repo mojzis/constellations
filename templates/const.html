@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+{{ const.name }}
+{% endblock %}
+{% block customhead%}
+<style type="text/css">
+img.const {
+    margin: auto;
+    display: block;
+}
+h3, .foot {
+    text-align: center;
+}
+.nextlink {
+    float: right;
+}
+</style>
+{% endblock %}
+{% block content %}
+<h1>{{ const.name }}</h1>
+<h3>{{ const.trans }}</h3>
+<img class="const" src="https://gitcdn.link/repo/Stellarium/stellarium-skycultures/master/dakota/{{ const.img }}">
+<div><a href="{{ const.prev }}.html">Previous</a> <a href="{{ const.next }}.html" class="nextlink">Next</a></div>
+<p class="foot">This shows art as displayed in the <a href="https://stellarium.org/">Stellarium</a> application, when selecting {{ culture }} culture. </p>
+{% endblock %}
