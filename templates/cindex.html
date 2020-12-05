@@ -7,6 +7,11 @@
 p.list {
     margin-bottom: 0.5rem;
     margin-top: 0;
+    float: left;
+    padding: 0.5rem;
+}
+.listcont {
+    display: flow-root;
 }
 </style>
 {% endblock %}
@@ -15,10 +20,13 @@ p.list {
 Constellations of the {{ culture.name }} culture,
 as shown in <a href="https://stellarium.org/">Stellarium</a>:
 </p>
+<div class="listcont">
 {% for const in const_data %}
 <p class="list">
-    <a href="{{ const.filename }}.html">{{ const.name }}</a>
+    <a href="{{ const.filename }}.html">
+    <img src="../thumbs/{{ culture.slug }}/{{ const.thumb_filename }}"> {{ const.name }}</a>
 </p>
 {% endfor %}
+</div>
 <p><a href="../index.html">Back to the list of all cultures.</a></p>
 {% endblock %}

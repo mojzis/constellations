@@ -3,6 +3,9 @@
 
 <head>
 <title>{% block title %}{% endblock%}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
 <style type="text/css">
 /* from https://vanillacss.com/vanilla.css */
 /* Reset */
@@ -35,7 +38,7 @@ time, mark, audio, video {
 /* Variables */
 :root {
     --desktop-font-size: 1.3rem/1.5;
-    --mobile-font-size: 1.1rem/1.4;
+    --mobile-font-size: 1.5rem/1.4;
     --text-color: white;
     --link-color: white;
     --primary-color: lightsteelblue;
@@ -140,8 +143,8 @@ h1 {
     text-align: center;
 }
 body {
-    padding: 1rem;
     background-color: black;
+    padding: 0.2rem;
 }
 </style>
 {% block customhead %}{% endblock%}

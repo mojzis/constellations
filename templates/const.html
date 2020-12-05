@@ -17,6 +17,12 @@ h3, .foot {
 }
 .bottomnav {
     margin-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.bottomnav a {
+    text-decoration: none;
+    font-weight: bold;
 }
 </style>
 {% endblock %}
@@ -24,8 +30,10 @@ h3, .foot {
 <h1>{{ const.name }}</h1>
 <h3>{{ const.trans }}</h3>
 <img class="const" src="https://gitcdn.link/repo/Stellarium/stellarium-skycultures/master/{{ culture.slug }}/{{ const.img }}">
-<div class="bottomnav"><a href="{{ const.prev }}.html">Previous</a> <a href="{{ const.next }}.html" class="nextlink">Next</a></div>
-<p class="foot">This shows art as displayed in the 
+<div class="bottomnav">
+<a href="{{ const.prev }}.html" accesskey=","><</a> 
+<a href="{{ const.next }}.html" class="nextlink" accesskey=".">></a></div>
+<p class="foot">Constellation art as displayed in the 
 <a href="https://stellarium.org/">Stellarium</a> application, 
-when selecting culture <a href="index.html">{{ culture.name }}</a>. </p>
+when culture <a href="index.html">{{ culture.name }}</a> is selected. </p>
 {% endblock %}

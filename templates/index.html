@@ -5,8 +5,18 @@ Constellations
 {% block customhead%}
 <style type="text/css">
 p.list {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
     margin-top: 0;
+    display: inline-flex;
+    padding: 0.5rem;
+}
+img.thumb {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0.2rem;
+}
+.listcont {
+    display: flow-root;
 }
 </style>
 {% endblock %}
@@ -15,9 +25,13 @@ p.list {
 Constellations per culture, 
 as shown in <a href="https://stellarium.org/">Stellarium</a>:
 </p>
+<div class="listcont">
 {% for cult in cultures %}
 <p class="list">
-    <a href="{{ cult.slug }}/index.html">{{ cult.name }}</a>
+    <a href="{{ cult.slug }}/index.html">
+    <img height="70" width="70" class="thumb" src="thumbs/{{ cult.slug }}/{{ cult.thumb_filename }}"
+    >{{ cult.name }}</a>
 </p>
 {% endfor %}
+<div>
 {% endblock %}
