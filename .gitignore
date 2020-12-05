@@ -3,3 +3,4 @@ venv
 !public/.gitkeep
 public/*
 !data/.gitkeep
+data/*
