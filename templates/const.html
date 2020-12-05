@@ -7,6 +7,7 @@
 img.const {
     margin: auto;
     display: block;
+    max-height: 100%;
 }
 h3, .foot {
     text-align: center;
@@ -14,12 +15,17 @@ h3, .foot {
 .nextlink {
     float: right;
 }
+.bottomnav {
+    margin-top: 2rem;
+}
 </style>
 {% endblock %}
 {% block content %}
 <h1>{{ const.name }}</h1>
 <h3>{{ const.trans }}</h3>
-<img class="const" src="https://gitcdn.link/repo/Stellarium/stellarium-skycultures/master/dakota/{{ const.img }}">
-<div><a href="{{ const.prev }}.html">Previous</a> <a href="{{ const.next }}.html" class="nextlink">Next</a></div>
-<p class="foot">This shows art as displayed in the <a href="https://stellarium.org/">Stellarium</a> application, when selecting {{ culture }} culture. </p>
+<img class="const" src="https://gitcdn.link/repo/Stellarium/stellarium-skycultures/master/{{ culture.slug }}/{{ const.img }}">
+<div class="bottomnav"><a href="{{ const.prev }}.html">Previous</a> <a href="{{ const.next }}.html" class="nextlink">Next</a></div>
+<p class="foot">This shows art as displayed in the 
+<a href="https://stellarium.org/">Stellarium</a> application, 
+when selecting culture <a href="index.html">{{ culture.name }}</a>. </p>
 {% endblock %}

@@ -11,8 +11,10 @@ p.list {
 </style>
 {% endblock %}
 {% block content %}
-
-Constellations per culture, as shown in <a href="https://stellarium.org/">Stellarium</a>
+<p>
+Constellations per culture, 
+as shown in <a href="https://stellarium.org/">Stellarium</a>:
+</p>
 {% for cult in cultures %}
 <p class="list">
     <a href="{{ cult.slug }}/index.html">{{ cult.name }}</a>
