@@ -1,6 +1,6 @@
 .vscode
 venv
-!public/.gitkeep
 public/*
-!data/.gitkeep
+!public/.gitkeep
 data/*
+!data/.gitkeep
