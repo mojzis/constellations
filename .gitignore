@@ -1,7 +1,7 @@
+.idea
 .vscode
 venv
-public/*
-!public/.gitkeep
+public/*/
 !public/thumbs
 data/*
 !data/.gitkeep
