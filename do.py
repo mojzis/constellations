@@ -41,13 +41,35 @@ def create_thumbnail(culture, orig_file_name, file_name):
             # TODO: fail if r 404
             i = open(img_file,'wb')
             i.write(r.content)
-        
+
         try:
             src_img = Image.open(img_file)
             src_img.thumbnail((THUMB_SIZE,THUMB_SIZE))
             src_img.save(thumb_file)
         except UnidentifiedImageError as e:
             print(e)
+
+
+def get_culture_data(culture):
+    data_path = f'data/{culture["slug"]}.json'
+    if os.path.isfile(data_path):
+        f = open(data_path)
+    else:
+        r = requests.get(
+            f'https://raw.githubusercontent.com/Stellarium/stellarium-skycultures/master/{culture["slug"]}/index.json'
+            , allow_redirects=True)
+        f = open(data_path, 'wb')
+        f.write(r.content)
+        # this looks totally broken, is there a better way ? (r.content is binary)
+        f = open(data_path, 'r')
+
+    culture_data = json.load(f)
+    f.close()
+    os.makedirs(f'public/{culture["slug"]}', exist_ok=True)
+    os.makedirs(f'{THUMB_DIR}/{culture["slug"]}', exist_ok=True)
+    os.makedirs(f'{IMG_DIR}/{culture["slug"]}', exist_ok=True)
+    return culture_data
+
 
 @click.command()
 def pub():
@@ -69,23 +91,8 @@ def pub():
         {"name":"Western","slug":"western"},
     ]
     for culture in cultures:
-        data_path = f'data/{culture["slug"]}.json'
-        if os.path.isfile(data_path):
-            f = open(data_path)
-        else:
-            r = requests.get(
-                f'https://raw.githubusercontent.com/Stellarium/stellarium-skycultures/master/{culture["slug"]}/index.json'
-                , allow_redirects=True)
-            f = open(data_path,'wb')
-            f.write(r.content)
-            # this looks totally broken, is there a better way ? (r.content is binary)
-            f = open(data_path,'r')
-
-        culture_data = json.load(f)
-        f.close()
-        os.makedirs(f'public/{culture["slug"]}',exist_ok=True)
-        os.makedirs(f'{THUMB_DIR}/{culture["slug"]}',exist_ok=True)
-        os.makedirs(f'{IMG_DIR}/{culture["slug"]}',exist_ok=True)
+        print(f"Processing {culture['name']}")
+        culture_data = get_culture_data(culture)
         constellations = culture_data['constellations']
         env = Environment(
             loader=FileSystemLoader('templates'),
@@ -120,7 +127,7 @@ def pub():
                         'next': 'index'
                         })
             prev = filename
-        
+
         for j in range(0,len(const_data)-1):
             const_data[j]['next'] = const_data[j+1]['filename']
         # const_data[len(const_data)]['next'] = 'index'
@@ -132,7 +139,7 @@ def pub():
             with open(f'public/{culture["slug"]}/{const["filename"]}.html','w') as s:
                 s.write(env.get_template('const.html')
                     .render(const=const, culture=culture))
-        
+
         with open(f'public/{culture["slug"]}/index.html','w') as i:
             i.write(env.get_template('cindex.html')
                 .render(const_data=const_data, culture=culture))
