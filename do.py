@@ -65,21 +65,23 @@ def get_culture_data(culture):
 
     culture_data = json.load(f)
     f.close()
+    return culture_data
+
+def prepare_folders(culture):
     os.makedirs(f'public/{culture["slug"]}', exist_ok=True)
     os.makedirs(f'{THUMB_DIR}/{culture["slug"]}', exist_ok=True)
     os.makedirs(f'{IMG_DIR}/{culture["slug"]}', exist_ok=True)
-    return culture_data
 
 
 @click.command()
 def pub():
     cultures = [
-        {"name":"Dakota","slug":"dakota"},
         {"name":"Arabic (Al-Sufi)","slug":"arabic_al-sufi"},
         {"name":"Aztec","slug":"aztec"},
         {"name":"Belarusian","slug":"belarusian"},
         {"name":"Boorong","slug":"boorong"},
         {"name":"Chinese","slug":"chinese_contemporary"},
+        {"name":"Dakota","slug":"dakota"},
         {"name":"Hawaiian","slug":"hawaiian_starlines"},
         {"name":"Inuit","slug":"inuit"},
         {"name":"Kamilaroi","slug":"kamilaroi"},
@@ -88,6 +90,7 @@ def pub():
         {"name":"Northern andes","slug":"northern_andes"},
         {"name":"Ojibwe","slug":"ojibwe"},
         {"name":"Romanian","slug":"romanian"},
+        {"name":"Sami","slug":"sami"},
         {"name":"Western","slug":"western"},
     ]
     for culture in cultures:
