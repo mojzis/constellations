@@ -30,5 +30,9 @@ a simple static website to show the images of constellations as shown in https:/
 - t-shirts :) or something ...
 - FIND MORE ART ?! - Africa ?
 
+## related projects
+- https://eleanorlutz.com/constellations-from-around-the-world
+- the guy doing the data analysis, cant recall now
+
 ## done
 - add thumbnails
