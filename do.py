@@ -53,7 +53,7 @@ def create_thumbnail(culture, orig_file_name, file_name):
 def pub():
     cultures = [
         {"name":"Dakota","slug":"dakota"},
-        {"name":"Arabic","slug":"arabic"},
+        {"name":"Arabic (Al-Sufi)","slug":"arabic_al-sufi"},
         {"name":"Aztec","slug":"aztec"},
         {"name":"Belarusian","slug":"belarusian"},
         {"name":"Boorong","slug":"boorong"},
