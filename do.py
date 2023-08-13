@@ -81,16 +81,15 @@ def pub():
         {"name":"Belarusian","slug":"belarusian"},
         {"name":"Boorong","slug":"boorong"},
         {"name":"Chinese","slug":"chinese_contemporary"},
-        {"name":"Dakota","slug":"dakota"},
+        # {"name":"Dakota","slug":"dakota"},
         {"name":"Hawaiian","slug":"hawaiian_starlines"},
         {"name":"Inuit","slug":"inuit"},
         {"name":"Kamilaroi","slug":"kamilaroi"},
         {"name":"Macedonian","slug":"macedonian"},
         {"name":"Maori","slug":"maori"},
         {"name":"Northern andes","slug":"northern_andes"},
-        {"name":"Ojibwe","slug":"ojibwe"},
+        # {"name":"Ojibwe","slug":"ojibwe"},
         {"name":"Romanian","slug":"romanian"},
-        {"name":"Sami","slug":"sami"},
         {"name":"Western","slug":"western"},
     ]
     for culture in cultures:
@@ -123,6 +122,7 @@ def pub():
             const_data.append({
                         "img" : img_path,
                         'thumb_filename': f'{img_filename}.{THUMB_EXT}',
+                        'img_filename': f'{img_filename}.{IMG_EXT}',
                         'name': name,
                         'trans': trans,
                         'filename' : filename,

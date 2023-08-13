@@ -3,7 +3,7 @@
 {{ const.name }}
 {% endblock %}
 {% block customhead%}
-<style type="text/css">
+<style>
 img.const {
     margin: auto;
     display: block;
@@ -29,11 +29,12 @@ h3, .foot {
 {% block content %}
 <h1>{{ const.name }}</h1>
 <h3>{{ const.trans }}</h3>
-<img class="const" src="https://gitcdn.link/cdn/Stellarium/stellarium-skycultures/master/{{ culture.slug }}/{{ const.img }}">
+    <img class="const" src="../img/{{ culture.slug }}/{{ const.img_filename }}">
+{#<img class="const" src="https://gitcdn.link/cdn/Stellarium/stellarium-skycultures/master/{{ culture.slug }}/{{ const.img }}">#}
 <div class="bottomnav">
-<a href="{{ const.prev }}.html" accesskey=","><</a> 
+<a href="{{ const.prev }}.html" accesskey=","><</a>
 <a href="{{ const.next }}.html" class="nextlink" accesskey=".">></a></div>
-<p class="foot">Constellation art as displayed in the 
-<a href="https://stellarium.org/">Stellarium</a> application, 
+<p class="foot">Constellation art as displayed in the
+<a href="https://stellarium.org/">Stellarium</a> application,
 when culture <a href="index.html">{{ culture.name }}</a> is selected. </p>
 {% endblock %}
