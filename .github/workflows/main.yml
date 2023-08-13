@@ -25,7 +25,7 @@ jobs:
 
       - name: do it
         run: |
-          sudo apt libwebp libwebp-dev
+          sudo apt install libwebp libwebp-dev
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           python do.py pub
