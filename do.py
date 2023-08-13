@@ -94,6 +94,7 @@ def pub():
     ]
     for culture in cultures:
         print(f"Processing {culture['name']}")
+        prepare_folders(culture)
         culture_data = get_culture_data(culture)
         constellations = culture_data['constellations']
         env = Environment(
