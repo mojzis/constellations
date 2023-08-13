@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
 
       - name: Setup Python
@@ -25,13 +25,14 @@ jobs:
 
       - name: do it
         run: |
+          sudo apt libwebp libwebp-dev
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           python do.py pub
       - name: Publish
-        uses: netlify/actions/cli@master
+        uses: jsmrcaga/action-netlify-deploy@v2.0.0
         with:
-          args: deploy --dir=public --prod
-        env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_DEPLOY_TO_PROD: true
+          build_directory: public
